@@ -389,6 +389,7 @@ html.map-open,html.map-open body{overflow:hidden}
 .mp-crow b{font:800 17px/1 var(--f-title)}
 .mp-inv{text-align:center;padding:6px 0}
 .mp-inv-cd{display:inline-block;margin:0 0 12px;background:var(--yellow);border:3.5px solid var(--ink);border-radius:999px;box-shadow:0 5px 0 var(--ink);font:800 22px/1 var(--f-title);padding:9px 20px 6px}
+.mp-inv-time{margin:4px 0 0;font:800 clamp(18px,1vw + 12px,22px)/1.2 var(--f-title);color:var(--ink)}
 .mp-inv-date{margin:0;font:800 clamp(24px,1.6vw + 14px,34px)/1.15 var(--f-title);color:var(--purple-d)}
 .mp-inv-place{margin:8px 0 0;font:800 17px/1.4 var(--f-body)}
 .mp-inv-place span{display:block;font-weight:700;color:#5B4BA8;font-size:15px}

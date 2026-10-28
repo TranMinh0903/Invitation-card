@@ -65,11 +65,20 @@
     if (kind === 'tree') return '<svg viewBox="-90 -120 180 140" aria-hidden="true">' + I.tree(-30, 10, 1.35, '#57D2B6') + I.tree(34, 14, 1, '#F7A8D8') + I.pine(70, 4, 0.8, '#9C7CF0') + '</svg>';
     return '';
   }
+  var EV_START = Date.UTC(2026, 10, 7, 5, 30, 0), EV_END = Date.UTC(2026, 10, 7, 10, 0, 0); // khách đến từ 12h30 đến 17h00 giờ Việt Nam
+  function vnDay(t) { return new Date(t + 7 * 3600e3).toISOString().slice(0, 10); }
+  function eventState() {
+    var now = Date.now();
+    if (now < EV_START) {
+      var days = Math.round((Date.parse(vnDay(EV_START)) - Date.parse(vnDay(now))) / 86400e3);
+      return days > 0 ? { pre: 'Còn', num: String(days), post: 'ngày' } : { pre: '', num: 'Hôm nay', post: 'lúc 12h30!' };
+    }
+    if (now < EV_END) return { pre: '', num: '', post: 'Mình đang chờ bạn ở trường!' };
+    return { pre: '', num: '', post: 'Cảm ơn bạn đã đến chung vui!' };
+  }
   function countdownText() {
-    var target = Date.UTC(2026, 10, 7, 0, 0, 0) - 7 * 3600e3, diff = target - Date.now();
-    if (diff > 0) return 'Còn ' + Math.ceil(diff / 86400e3) + ' ngày';
-    if (diff > -86400e3) return 'Hôm nay là ngày lễ!';
-    return 'Cảm ơn bạn đã đến chung vui!';
+    var st = eventState();
+    return [st.pre, st.num, st.post].filter(Boolean).join(' ');
   }
   function bodyFor(id) {
     var inf = INFO[id], h = '';
@@ -133,7 +142,7 @@
         '</div><p class="mp-note mp-anim" style="--i:3">Mình đang tìm vị trí Graduate / Fresher Software Developer (C# / .NET) tại TP.HCM.</p>';
     } else if (inf.kind === 'invite') {
       h = '<div class="mp-inv mp-anim" style="--i:0"><p class="mp-inv-cd">' + countdownText() + '</p>' +
-        '<p class="mp-inv-date">Thứ Bảy, 07.11.2026</p><p class="mp-inv-place">Trường Đại học FPT TP.HCM<span>Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM</span></p>' +
+        '<p class="mp-inv-date">Thứ Bảy, 07.11.2026</p><p class="mp-inv-time">Từ 12h30</p><p class="mp-inv-place">Trường Đại học FPT TP.HCM<span>Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM</span></p>' +
         '<div class="mp-actions"><button type="button" class="btn btn-yellow" id="mpToInvite">Mở thư mời</button>' +
         '<a class="btn btn-white" href="https://www.google.com/maps/search/?api=1&amp;query=FPT+University+Ho+Chi+Minh+City" target="_blank" rel="noopener">Xem đường đi</a></div></div>';
     }

@@ -576,12 +576,20 @@
   }
 
   /* ---------- đếm ngược tới 07.11.2026 (giờ Việt Nam) ---------- */
+  var EV_START = Date.UTC(2026, 10, 7, 5, 30, 0), EV_END = Date.UTC(2026, 10, 7, 10, 0, 0); // khách đến từ 12h30 đến 17h00 giờ Việt Nam
+  function vnDay(t) { return new Date(t + 7 * 3600e3).toISOString().slice(0, 10); }
+  function eventState() {
+    var now = Date.now();
+    if (now < EV_START) {
+      var days = Math.round((Date.parse(vnDay(EV_START)) - Date.parse(vnDay(now))) / 86400e3);
+      return days > 0 ? { pre: 'Còn', num: String(days), post: 'ngày' } : { pre: '', num: 'Hôm nay', post: 'lúc 12h30!' };
+    }
+    if (now < EV_END) return { pre: '', num: '', post: 'Mình đang chờ bạn ở trường!' };
+    return { pre: '', num: '', post: 'Cảm ơn bạn đã đến chung vui!' };
+  }
   function countdown() {
-    var target = Date.UTC(2026, 10, 7, 0, 0, 0) - 7 * 3600e3, diff = target - Date.now();
-    var pre = $('#cdPre'), num = $('#cdNum'), post = $('#cdPost');
-    if (diff > 0) { pre.textContent = 'Còn'; num.textContent = Math.ceil(diff / 86400e3); post.textContent = 'ngày'; }
-    else if (diff > -86400e3) { pre.textContent = ''; num.textContent = 'Hôm nay'; post.textContent = 'là ngày lễ!'; }
-    else { pre.textContent = ''; num.textContent = ''; post.textContent = 'Cảm ơn bạn đã đến chung vui!'; }
+    var st = eventState();
+    $('#cdPre').textContent = st.pre; $('#cdNum').textContent = st.num; $('#cdPost').textContent = st.post;
   }
   countdown(); setInterval(countdown, 60000);
 

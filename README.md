@@ -2,7 +2,7 @@
 
 Trang web thư mời dự lễ tốt nghiệp kiêm portfolio cá nhân, theo chủ đề **thẻ bài tarot phép thuật**. Trang có bản đồ hành trình 2.5D để khám phá như trong game.
 
-> Lễ tốt nghiệp: **Thứ Bảy, 07.11.2026** tại Trường Đại học FPT TP.HCM (Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM)
+> Lễ tốt nghiệp: **Thứ Bảy, 07.11.2026 · từ 12h30** tại Trường Đại học FPT TP.HCM (Lô E2a-7, Đường D1, Khu Công nghệ cao, TP.HCM)
 
 ## Tính năng
 
@@ -79,7 +79,7 @@ python -m http.server 8000
 | Lời cảm ơn, thư mời, giờ lễ, địa điểm | `index.html` |
 | Nội dung các địa điểm trên bản đồ (giới thiệu, dự án, kỹ năng, liên hệ) | `js/map.js`: `INFO`, `PROJECTS`, hàm `bodyFor` |
 | Tên và nhãn các địa điểm | `js/iso.js`: mảng `LOC` |
-| Ngày đếm ngược | `js/main.js` và `js/map.js`: `Date.UTC(2026, 10, 7)` |
+| Giờ lễ và đếm ngược | `js/main.js` và `js/map.js`: `EV_START`, `EV_END` (giờ UTC) |
 | Màu sắc, font | `css/style.css`: biến trong `:root` |
 
 **Về ảnh:** các khung ảnh hiện cho phép bấm để xem thử ảnh trên máy mình. Ảnh này **không được lưu và không gửi đi đâu**. Ảnh chính thức sẽ được đặt vào `assets/images/` rồi gắn cố định vào trang.
