@@ -35,6 +35,9 @@ svg{overflow:visible}
 .photo-slot input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .photo-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .photo-slot.has-img{outline:none;background:#ddd}
+.photo-slot.fixed{cursor:default}
+.photo-slot.fixed img{opacity:0;transition:opacity .5s}
+.photo-slot.fixed img.ok{opacity:1}
 .photo-slot:focus-within{box-shadow:0 0 0 4px var(--yellow)}
 .ph-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25em;text-align:center;padding:8%;line-height:1.15}
 .ph-empty svg{width:2.4em;height:auto}
@@ -504,7 +507,7 @@ a.mp-cval{text-decoration:underline;text-decoration-color:#B3A4FA;text-underline
 
 @media (max-width:760px){
   .table{--cw:15.5%;margin-bottom:6%}
-  .portrait{width:33%;top:-18%}
+  .portrait{width:29%;top:-2%}
   .vine{width:20%;top:-22%}
   .vine.l{left:-9%}.vine.r{right:-9%}
   .logo-wrap{width:96vw}

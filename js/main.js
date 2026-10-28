@@ -46,12 +46,25 @@
   }
   $$('.photo-slot').forEach(function (slot) {
     var id = 'ph-' + slot.dataset.slot, label = slot.dataset.label, key = 'tm-photo:' + slot.dataset.slot;
+    store(key, null);
+    if (slot.dataset.src) {
+      /* khung đã có ảnh chính thức: hiển thị cố định, không cho đổi */
+      var box = document.createElement('span'); box.className = slot.className + ' has-img fixed';
+      Array.prototype.forEach.call(slot.attributes, function (a) { if (a.name !== 'class' && a.name !== 'for') box.setAttribute(a.name, a.value); });
+      var pic = new Image(); pic.alt = label; pic.decoding = 'async';
+      if (slot.dataset.slot !== 'chan-dung') pic.loading = 'lazy';
+      if (slot.dataset.pos) pic.style.objectPosition = slot.dataset.pos;
+      pic.onload = function () { pic.classList.add('ok'); };
+      pic.src = slot.dataset.src;
+      box.appendChild(pic);
+      slot.parentNode.replaceChild(box, slot);
+      return;
+    }
     slot.innerHTML = '<input type="file" accept="image/*" id="' + id + '" aria-label="Chọn ' + label + '">' +
       '<span class="ph-empty">' + CAM + '<b>Thêm ảnh</b><small>' + label + '</small></span>' +
       '<img alt="' + label + '" hidden><span class="ph-change" aria-hidden="true">Đổi ảnh</span>';
     var input = slot.querySelector('input'), img = slot.querySelector('img');
     function show(src) { img.src = src; img.hidden = false; slot.classList.add('has-img'); }
-    store(key, null);
     input.addEventListener('change', function () {
       var f = input.files && input.files[0];
       if (!f) return;

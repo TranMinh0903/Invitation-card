@@ -59,7 +59,7 @@ HTML, CSS và JavaScript thuần, không dùng framework và **không cần bư�
 │   ├── iso.js          # Vẽ bản đồ 2.5D (công trình, cây, đường đá)
 │   └── map.js          # Bản đồ tương tác và nội dung từng địa điểm
 └── assets/
-    └── images/         # Ảnh cá nhân (sẽ thêm sau)
+    └── images/         # Ảnh cá nhân: chân dung, trải bài, album
 ```
 
 ## Chạy thử trên máy
@@ -82,7 +82,7 @@ python -m http.server 8000
 | Giờ lễ và đếm ngược | `js/main.js` và `js/map.js`: `EV_START`, `EV_END` (giờ UTC) |
 | Màu sắc, font | `css/style.css`: biến trong `:root` |
 
-**Về ảnh:** các khung ảnh hiện cho phép bấm để xem thử ảnh trên máy mình. Ảnh này **không được lưu và không gửi đi đâu**. Ảnh chính thức sẽ được đặt vào `assets/images/` rồi gắn cố định vào trang.
+**Về ảnh:** ảnh chính thức nằm trong `assets/images/` và được gắn vào khung qua thuộc tính `data-src` trong `index.html` (ví dụ `data-src="assets/images/chan-dung.jpg"`). Khung đã có ảnh sẽ hiển thị cố định. Khung chưa có ảnh vẫn cho bấm để xem thử ảnh trên máy mình; ảnh thử này **không được lưu và không gửi đi đâu**. Ảnh nên được thu nhỏ (khoảng 1000px) và xóa thông tin EXIF trước khi đưa vào.
 
 ## Triển khai
 
