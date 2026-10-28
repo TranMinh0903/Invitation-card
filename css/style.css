@@ -47,6 +47,7 @@ svg{overflow:visible}
 .ph-change{position:absolute;right:6px;bottom:6px;background:rgba(43,28,122,.78);color:#fff;font:800 11px/1 var(--f-body);padding:5px 8px;border-radius:999px;opacity:0;transition:opacity .2s}
 .has-img:hover .ph-change,.has-img:focus-within .ph-change{opacity:1}
 .tcard .photo-slot{font-size:6.6cqw;border-radius:2.4cqw}
+.tcard .photo-slot.tc-photo{position:absolute;left:20.5%;top:15.5%;width:59%;height:58%}
 
 /* ---------- tiêu đề, nút ---------- */
 .kicker{display:inline-block;margin:0 0 14px;padding:3px 16px 2px;background:var(--yellow);color:var(--ink);border:3px solid var(--ink);border-radius:999px;box-shadow:0 4px 0 var(--ink);font:800 15px/1.5 var(--f-title);letter-spacing:.02em;transform:rotate(-2deg)}
